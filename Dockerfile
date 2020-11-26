@@ -15,7 +15,7 @@ RUN \
 #VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/ssl", "/etc/nginx/conf.d", "/var/log/nginx"]
 
 RUN \
-  cd /usr/share/nginx/html/ && \
+  cd /var/www/html/ && \
   dd if=/dev/zero of=1GB.bin bs=1 count=0 seek=1G && \
   dd if=/dev/zero of=100MB.bin bs=1024 count=102400 && \
   dd if=/dev/zero of=10MB.bin bs=1024 count=10240 && \
