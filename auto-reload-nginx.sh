@@ -13,12 +13,12 @@
 # limitations under the License.
 
 nginx "$@"
-oldcksum=`/etc/nginx/sites-enabled/default.conf`
+oldcksum=`/etc/nginx/sites-enabled/default`
 
 inotifywait -mr --timefmt '%d/%m/%y %H:%M' --format '%T' \
 /etc/nginx/conf.d/ | while read date time; do
 
-	newcksum=`cksum /etc/nginx/sites-enabled/default.conf`
+	newcksum=`cksum /etc/nginx/sites-enabled/default`
 	if [ "$newcksum" != "$oldcksum" ]; then
 		echo "At ${time} on ${date}, config file update detected."
 		oldcksum=$newcksum
